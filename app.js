@@ -8,6 +8,8 @@ const products = require("./Router/products");
 const admin = require("./Router/admin");
 require("dotenv").config();
 
+const port = process.env.PORT || 5000;
+
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
@@ -18,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 const start = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-    app.listen(process.env.PORT || 5000);
+    app.listen(port);
   } catch (err) {
     console.log(err);
   }
