@@ -2,15 +2,11 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
-const Product = require("./model/products");
-const data = require("./data");
 const cookieParser = require("cookie-parser");
 const users = require("./Router/users");
 const products = require("./Router/products");
 const admin = require("./Router/admin");
 require("dotenv").config();
-
-const PORT = process.env.PORT || 5000;
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -22,9 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 const start = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-    // await Product.deleteMany();
-    // await Product.create(data);
-    app.listen(PORT, () => console.log("listening on port " + PORT));
+    app.listen(process.env.PORT || 5000);
   } catch (err) {
     console.log(err);
   }
