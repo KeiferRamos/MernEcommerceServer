@@ -14,10 +14,7 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(
   cors({
-    origin: [
-      "https://localhost:3000",
-      "https://keiferramos.github.io/MernStackEcommerce/",
-    ],
+    origin: ["https://localhost:3000", "https://keiferramos.github.io"],
     credentials: true,
   })
 );
