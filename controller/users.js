@@ -65,7 +65,13 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign({ id: validEmail._id }, process.env.JWT_PASSWORD);
-    res.cookie("token", token, { httpOnly: true }).json("/");
+    res
+      .cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        someSite: "none",
+      })
+      .json("/");
   } catch (err) {
     res.status(404).json(err);
   }
@@ -236,7 +242,10 @@ const hasLoggedIn = async (req, res) => {
 };
 
 const logout = (req, res) => {
-  res.cookie("token", "", { httpOnly: true }).status(200).json(false);
+  res
+    .cookie("token", "", { httpOnly: true, secure: true, someSite: "none" })
+    .status(200)
+    .json(false);
 };
 
 module.exports = {
