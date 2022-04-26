@@ -243,7 +243,7 @@ const hasLoggedIn = async (req, res) => {
 
 const logout = (req, res) => {
   res
-    .cookie("token", "", { httpOnly: true, secure: true, someSite: "none" })
+    .cookie("token", "", { httpOnly: true, secure: true, sameSite: "none" })
     .status(200)
     .json(false);
 };
