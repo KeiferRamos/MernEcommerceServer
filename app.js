@@ -16,7 +16,7 @@ app.use(
   cors({
     origin: [
       "https://localhost:3000",
-      "https://mernstackecommercejs.netlify.app/",
+      "https://mernstackecommercejs.netlify.app",
     ],
     credentials: true,
   })
