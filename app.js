@@ -15,7 +15,7 @@ app.set("view engine", "ejs");
 app.use(
   cors({
     origin: [
-      "https://localhost:3000",
+      "http://localhost:3000",
       "https://mernstackecommercejs.netlify.app",
     ],
     credentials: true,

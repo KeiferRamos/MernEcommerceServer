@@ -68,8 +68,6 @@ const login = async (req, res) => {
     res
       .cookie("token", token, {
         httpOnly: true,
-        secure: true,
-        sameSite: "none",
       })
       .json("/");
   } catch (err) {
@@ -242,10 +240,7 @@ const hasLoggedIn = async (req, res) => {
 };
 
 const logout = (req, res) => {
-  res
-    .cookie("token", "", { httpOnly: true, secure: true, sameSite: "none" })
-    .status(200)
-    .json(false);
+  res.cookie("token", "", { httpOnly: true }).status(200).json(false);
 };
 
 module.exports = {
